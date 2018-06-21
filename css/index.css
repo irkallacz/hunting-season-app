@@ -1,0 +1,18 @@
+a {text-decoration: none;}
+.text-center {text-align: center;}
+#map {width: 100%; position: relative; overflow: scroll; overflow-x: auto; overflow-y: auto;}
+#map .circle {position: absolute;}
+
+.circle {border-radius: 1.5em; display: inline-block; height: 1.5em; line-height: 1.5em; width: 1.5em;
+border: 1px solid #000000; font-weight: bold; text-align: center;}
+
+#map .circle {margin-left: -1.5ex; margin-top: -1.5ex; color: black;}
+#points .circle {margin-right: 1ex; color: white;}
+
+.player {background-color: rgba(255,0,0,0.5);}
+.point {background-color: rgba(0,255,0,0.5);}
+.current .circle, .current.circle {background-color: rgba(0,102,204,0.5);}
+.taken .point, .taken.point {background-color: rgba(255,204,0,0.5);}
+.taken .player, .taken.player {background-color: rgba(150,0,150,0.5);}
+
+#location.circle {color: rgba(0,102,204,0.5); border: 1px solid rgba(0,102,204,0.5);}

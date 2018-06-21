@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/jquery.mobile.css">
+  <link rel="stylesheet" href="css/index.css">
+  <!-- <script type="text/javascript" src="cordova.js"></script> --> 
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.mobile.js"></script>
+  <script type="text/javascript" src="js/xdate.js"></script>
+  <script type="text/javascript" src="js/md5.js"></script>
+  <script type="text/javascript" src="js/hmac-sha256.js"></script>
+  <script type="text/javascript" src="js/geo.js"></script>
+  <script type="text/javascript"> 
+  $(document).ready(function(){
+    $('#zoom').on('slidestop', Geo.zoom)
+    $('#zoom').on('slidestart', Geo.zoom);
+
+    Geo.draw.all();
+    
+    secondInterval = window.setInterval(Geo.timer.runInterval,1000);
+  });  
+  </script>
+</head> 
+<body> 
+<div data-role=page id=home data-theme=b>
+  <div data-role=header data-position=fixed data-id=foo1>
+    <h1>Lovecká sezóna</h1>
+    <a href="javascript:Geo.action.logout()" data-role=button>Odhlásit</a>
+    <a href=#points data-role=button data-icon=carat-r>Detail</a>
+    <div data-role=navbar>
+      <input id=zoom type=range data-role=range min=10 max=200 value=100 step=10 data-highlight=true data-mini=true onchange="Geo.draw.map()">
+    </div>
+  </div>
+  <div data-role=content>
+    <div id=map>
+      <img src="img/map.png" id=picture width=1560 height=2044>
+    </div>
+     <script type="text/javascript" src="js/touchscroll.js"></script>    
+  </div>
+  
+  <div data-role=footer data-position=fixed data-id=foo1 >
+    <div class="ui-grid-b">    
+      <div class="ui-block-a text-center footer-time"></div>
+      <div class="ui-block-b text-center footer-coords"></div>
+      <div class="ui-block-c text-center footer-acc"></div>
+    </div>
+    <div data-role=navbar>
+      <ul>
+        <li><a href="javascript:Geo.action.refresh()" data-icon=refresh>Obnovit</a></li>
+        <li><a href="javascript:Geo.action.markPoint()" data-icon=location>Nahlásit polohu</a></li>
+        <li><a href="javascript:Geo.action.markUser()" data-icon=user>Nahlásit tým</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div data-role=page id=points data-theme=b data-add-back-btn=true>
+  <div data-role=header data-position=fixed data-id=foo2>
+    <a href=#home data-role="button" data-icon=carat-l>Zpět</a>
+    <h1>Detail</h1>
+  </div>
+  
+  <div data-role=content data-theme=b>
+      <h3>Hráči</h3>  
+      <div id=hraci data-role=collapsible-set data-collapsed-icon=carat-d data-expanded-icon=carat-u>
+      </div>
+      <h3>Body</h3>  
+      <div id=body data-role=collapsible-set data-collapsed-icon=carat-d data-expanded-icon=carat-u>
+      </div>
+  </div>
+  
+  <div data-role=footer data-position=fixed data-id=foo2 >
+    <div class="ui-grid-b">    
+      <div class="ui-block-a text-center footer-time"></div>
+      <div class="ui-block-b text-center footer-coords"></div>
+      <div class="ui-block-c text-center footer-acc"></div>
+    </div>
+    <div data-role=navbar>
+      <ul>
+        <li><a href="javascript:Geo.refresh()" data-icon=refresh>Obnovit</a></li>
+        <li><a href="javascript:Geo.markPoint()" data-icon=location>Nahlásit polohu</a></li>
+        <li><a href="javascript:Geo.markUser()" data-icon=user>Nahlásit tým</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
